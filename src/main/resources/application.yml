@@ -1,0 +1,115 @@
+server:
+  port: 8080
+
+  tomcat:
+    threads:
+      max: 50
+      min-spare: 2
+    max-connections: 10
+
+camel:
+  servlet:
+    mapping:
+      context-path: /services/*
+  springboot:
+    tracing: false
+  #        routes-reload-pattern: classpath:camel-routes/*
+  thread-pool:
+    pool-size: 28
+    max-pool-size: 48
+    config:
+      max-pool-size: 38
+      pool-size: 58
+  component:
+    rabbitmq:
+      prefetchEnabled: true
+      prefetchGlobal: false
+      prefetchSize: 0
+      prefetchCount: 1
+
+learn:
+  camel:
+    hello:
+      enabled: false
+    seda:
+      enabled: false
+    file:
+      enabled: false
+    rabbitmq:
+      enabled: false
+    rabbitmq-throttler:
+      enabled: false
+    wiretap:
+      enabled: false
+    rest-java-dsl:
+      enabled: false
+    #Weather (Non Rabbit); enable rabbitmq for Rest with Rabbit
+    rest-dsl:
+      enabled: false
+    rest-metrics:
+      enabled: false
+    kafka:
+      enabled: false
+    error-handlers:
+      enabled: false
+
+    #Also check property spring.autoconfigure.exclude
+    jms:
+      enabled: false
+    testcontainers:
+      enabled: false
+    saga:
+      enabled: false
+    circuit-breaker:
+      enabled: false
+    nats:
+      enabled: false
+
+metrics: 0 */1 * * * *
+
+logging:
+  level:
+    root: INFO
+    org.apache.camel: INFO
+    com.jss.camel.components: INFO
+    org.apache.http: INFO
+    org.apache.commons.httpclient: INFO
+    org.apache.coyote: INFO
+
+#---
+#spring:
+#    config:
+#        activate:
+#            on-profile: management
+
+management:
+  health:
+    rabbit:
+      enabled: false
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - prometheus
+          - liveness
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+
+      group:
+        readiness:
+          include: "*"
+
+spring:
+  jmx:
+    enabled: true
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration
