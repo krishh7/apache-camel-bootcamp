@@ -11,6 +11,7 @@ camel:
   servlet:
     mapping:
       context-path: /services/*
+
   springboot:
     tracing: false
   #        routes-reload-pattern: classpath:camel-routes/*
@@ -42,7 +43,7 @@ learn:
     wiretap:
       enabled: false
     rest-java-dsl:
-      enabled: false
+      enabled: true
     #Weather (Non Rabbit); enable rabbitmq for Rest with Rabbit
     rest-dsl:
       enabled: false
