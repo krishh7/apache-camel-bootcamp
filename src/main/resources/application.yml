@@ -11,6 +11,7 @@ camel:
   servlet:
     mapping:
       context-path: /services/*
+
   springboot:
     tracing: false
   #        routes-reload-pattern: classpath:camel-routes/*
