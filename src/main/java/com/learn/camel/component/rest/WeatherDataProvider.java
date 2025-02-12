@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(name = "learn.camel.rabbitmq.enabled", havingValue = "true")
+//@ConditionalOnProperty(name = "learn.camel.rest-java-dsl.enabled", havingValue = "true")
 public class WeatherDataProvider {
 
     private static Map<String, WeatherDTO> weatherData = new HashMap<>();
@@ -23,7 +23,7 @@ public class WeatherDataProvider {
                         .id(1)
                         .build();
 
-        weatherData.put("Hyderabad", weatherDTO);
+        weatherData.put("HYDERABAD", weatherDTO);
     }
 
     public WeatherDTO getCurrentWeather(String city) {
